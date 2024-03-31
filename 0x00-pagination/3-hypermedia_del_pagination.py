@@ -26,6 +26,7 @@ class Server:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
             self.__dataset = dataset[1:]
+
         return self.__dataset
 
     def indexed_dataset(self) -> Dict[int, List]:
@@ -60,7 +61,7 @@ class Server:
 
         return {
             "index": index,
-            "next_index": next_index,
+            "data": data,
             "page_size": page_size,
-            "data": data
+            "next_index": next_index
         }
