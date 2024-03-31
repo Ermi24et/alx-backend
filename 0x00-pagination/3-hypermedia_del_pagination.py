@@ -45,12 +45,22 @@ class Server:
         """
         returns a dictionary
         """
-        assert isinstance(index, int) and index >= 0
-        assert isinstance(page_size, int) and page_size > 0
+        assert isinstance(index, int)
+        assert isinstance(page_size, int)
+        csv = self.indexed_dataset()
+        csv_size = len(csv)
+        assert 0 <= index < csv_size
+        data = []
+        next_index = index
+        for _ in range(page_size):
+            while not csv.get(next_index):
+                next_index += 1
+            data.append(csv.get(next_index))
+            next_index += 1
 
         return {
             "index": index,
-            "next_index": index + page_size,
+            "next_index": next_index,
             "page_size": page_size,
-            "data": self.__dataset[index: index + page_size]
+            "data": data
         }
