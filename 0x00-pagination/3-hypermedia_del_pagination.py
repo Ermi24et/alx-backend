@@ -52,16 +52,16 @@ class Server:
         csv_size = len(csv)
         assert 0 <= index < csv_size
         data = []
-        next_index = index
+        _next = index
         for _ in range(page_size):
-            while not csv.get(next_index):
-                next_index += 1
-            data.append(csv.get(next_index))
-            next_index += 1
+            while not csv.get(_next):
+                _next += 1
+            data.append(csv.get(_next))
+            _next = 1
 
         return {
             "index": index,
             "data": data,
             "page_size": page_size,
-            "next_index": next_index
+            "next_index": _next
         }
