@@ -17,7 +17,6 @@ class BasicCache(BaseCaching):
                 new_dict[k] = v
             return new_dict"""
         self.cache_data[key] = item
-        return self.cache_data
 
     def get(self, key):
         """a method that returns the value in self.cache_data linked to key"""
