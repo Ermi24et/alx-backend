@@ -26,6 +26,6 @@ class MRUCache(BaseCaching):
     def get(self, key):
         """a method that rerurns the value in self.cache_data linked to key"""
         if key is not None and key in self.cache_data:
-            self.cache_data.move_to_end(key)
+            self.cache_data.move_to_end(key, last=False)
             return self.cache_data[key]
         return None
