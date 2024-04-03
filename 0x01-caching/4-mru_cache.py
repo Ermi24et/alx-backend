@@ -17,12 +17,11 @@ class MRUCache(BaseCaching):
         """a method that assigns the dictionary self.cache_data the item
         value for the key"""
         if key is not None and item is not None:
+            if len(self.cache_data) + 1 > BaseCaching.MAX_ITEMS:
+                mru_item, _ = self.cache_data.popitem(False)
+                print(f"DISCARD: {mru_item}")
             self.cache_data[key] = item
-            self.cache_data.move_to_end(key)
-            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                mru_item = list(self.cache_data)[len(self.cache_data) - 2]
-                self.cache_data.pop(mru_item)
-                print(f"DISCARD: {mru_item[0]}")
+            self.cache_data.move_to_end(key, last=False)
 
     def get(self, key):
         """a method that rerurns the value in self.cache_data linked to key"""
