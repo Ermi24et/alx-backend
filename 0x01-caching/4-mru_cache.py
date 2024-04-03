@@ -18,8 +18,8 @@ class MRUCache(BaseCaching):
         value for the key"""
         if key is not None and item is not None:
             if len(self.cache_data) + 1 > BaseCaching.MAX_ITEMS:
-                mru_item, _ = self.cache_data.popitem(False)
-                print(f"DISCARD: {mru_item}")
+                mru_item = self.cache_data.popitem(False)
+                print(f"DISCARD: {mru_item[0]}")
             self.cache_data[key] = item
             self.cache_data.move_to_end(key, last=False)
 
