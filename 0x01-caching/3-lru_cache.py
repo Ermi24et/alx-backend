@@ -18,8 +18,9 @@ class LRUCache(BaseCaching):
     def put(self, key, item):
         """a method to assign the dict self.cache_data the item
         value for the key"""
-        if key is not None or item is not None:
+        if key is not None and item is not None:
             self.cache_data[key] = item
+            self.cache_data.move_to_end(key)
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 first_item = self.cache_data.popitem(last=False)
                 print(f"DISCARD: {first_item[0]}")
@@ -27,5 +28,6 @@ class LRUCache(BaseCaching):
     def get(self, key):
         """a method that returns the value in self.cache_data linked to key"""
         if key is not None and key in self.cache_data:
+            self.cache_data.move_to_end(key)
             return self.cache_data[key]
         return None
