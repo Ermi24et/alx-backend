@@ -15,6 +15,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel()
 
+
 @babel.localeselector
 def get_locale():
     """get locale from request"""
