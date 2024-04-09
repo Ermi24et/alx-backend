@@ -4,7 +4,7 @@ from flask.babel import Babel
 from flask import Flask, request, render_template
 
 
-app = Flask()
+app = Flask(__name__)
 babel = Babel(app)
 
 
