@@ -20,6 +20,7 @@ app.config.from_object(Config)
 
 @app.route('/')
 def welcome():
+    """a simple method to say welcome"""
     return render_template('1-index.html')
 
 
