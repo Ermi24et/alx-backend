@@ -24,7 +24,7 @@ def get_locale():
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-@app.route('/', methods=["GET"], strict_slashes=False)
+@app.route('/')
 def welcome():
     """simple method to render an html file"""
     return render_template('2-index.html')
