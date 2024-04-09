@@ -25,4 +25,4 @@ def get_locale():
 @app.route('/')
 def welcome():
     """simple method to render an html file"""
-    return render_template('2-index.html')
+    return render_template('3-index.html')
